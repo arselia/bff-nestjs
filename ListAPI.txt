@@ -1,0 +1,239 @@
+# API Endpoints for All Services
+
+================================================================
+# 1. API GATEWAY (Pintu Gerbang Utama)
+================================================================
+Semua permintaan dari luar (frontend) harus melalui API Gateway.
+Gateway akan meneruskan permintaan ke layanan yang sesuai berdasarkan URL.
+
+**Alamat Gateway:** http://localhost:8007
+
+**Pola URL:**
+`http://localhost:8007/api/<nama-layanan>/<endpoint-di-layanan-tersebut>`
+
+**Komponen:**
+- `<nama-layanan>`: Nama folder layanan (contoh: `user-service`, `product-service`, `bff-web`).
+- `<endpoint-di-layanan-tersebut>`: Path endpoint yang ada di layanan tujuan.
+
+---
+**CONTOH PENGGUNAAN:**
+---
+
+**Contoh 1: Login Pengguna (melalui `user-service`)**
+- **Tujuan:** `POST /users/login` di `user-service`.
+- **Akses via Gateway:** `POST http://localhost:8007/api/user-service/users/login`
+
+**Contoh 2: Melihat semua produk (melalui `product-service`)**
+- **Tujuan:** `GET /products` di `product-service`.
+- **Akses via Gateway:** `GET http://localhost:8007/api/product-service/products`
+
+**Contoh 3: Menambah item ke keranjang (melalui `order-service`)**
+- **Tujuan:** `POST /carts` di `order-service`.
+- **Akses via Gateway:** `POST http://localhost:8007/api/order-service/carts`
+
+**Contoh 4: Mendapatkan data dashboard untuk Web (melalui `bff-web`)**
+- **Tujuan:** `GET /dashboard/:userId` di `bff-web`.
+- **Akses via Gateway:** `GET http://localhost:8007/api/bff-web/dashboard/some-user-id`
+
+**Contoh 5: Mendapatkan data dashboard untuk Mobile (melalui `bff-mobile`)**
+- **Tujuan:** `GET /dashboard` di `bff-mobile`.
+- **Akses via Gateway:** `GET http://localhost:8007/api/bff-mobile/dashboard`
+
+================================================================
+# 2. User Service (Layanan Pengguna)
+================================================================
+*   `POST /users/register` - Register a new user.
+*   `POST /users/login` - Login a user.
+*   `POST /users/forgot-password` - Initiate password reset.
+*   `POST /users/reset-password/:token` - Reset password with token.
+*   `PUT /users/profile/update` - Update own profile.
+*   `GET /users/profile` - Get own profile.
+*   `DELETE /users/profile` - Delete own profile.
+*   `GET /users/profile/addresses` - Get own addresses.
+*   `POST /users/profile/addresses` - Add a new address.
+*   `PUT /users/profile/addresses/:addressId` - Update an address.
+*   `DELETE /users/profile/addresses/:addressId` - Delete an address.
+*   `PUT /users/profile/addresses/:addressId/default` - Set an address as default.
+*   `GET /users/all` - (Admin) Get all users.
+*   `GET /users/:id` - (Admin) Get user by ID.
+*   `PUT /users/:id` - (Admin) Update user by ID.
+*   `DELETE /users/:id` - (Admin) Delete user by ID.
+*   `GET /users/:id/internal/addresses` - (Internal) Get user addresses.
+
+================================================================
+# 3. Product Service (Layanan Produk)
+================================================================
+
+### ProductsController
+*   `POST /products` - (Admin) Create a new product.
+*   `GET /products` - Get all products.
+*   `GET /products/:id` - Get product by ID.
+*   `PUT /products/:id` - (Admin) Update product by ID.
+*   `DELETE /products/:id` - (Admin) Archive product by ID.
+*   `PUT /products/:id/stock` - (Admin) Update product stock.
+*   `PUT /products/:id/internal/stock` - (Internal) Update product stock.
+*   `GET /products/reviews/me` - Get all reviews by the current user.
+*   `GET /products/:id/reviews` - Get all reviews for a specific product.
+*   `GET /products/:productId/all-reviews` - Get all reviews for a specific product (public).
+*   `POST /products/:id/reviews` - Create a review for a product.
+*   `GET /products/reviews/all` - Get all reviews (public).
+*   `GET /products/reviews/:id` - Get a single review by ID.
+
+### CategoryController
+*   `GET /categories` - Get all categories.
+*   `GET /categories/:id` - Get category by ID.
+*   `GET /categories/:categoryId/products` - Get all products in a category.
+*   `POST /categories` - (Admin) Create a new category.
+*   `PUT /categories/:id` - (Admin) Update category by ID.
+*   `DELETE /categories/:id` - (Admin) Delete category by ID.
+
+================================================================
+# 4. Order Service (Layanan Pesanan, Keranjang, Wishlist)
+================================================================
+
+### CartController
+*   `POST /carts` - Create a new cart item.
+*   `GET /carts` - Get all cart items for the current user.
+*   `GET /carts/:id` - Get a single cart item by ID for the current user.
+*   `PUT /carts/:id` - Update a cart item by ID for the current user.
+*   `DELETE /carts/:id` - Delete a cart item by ID for the current user.
+
+### OrderController
+*   `POST /orders` - Create a new order.
+*   `GET /orders/check-product-purchase` - Check if the user has purchased a specific product.
+*   `GET /orders/my-orders` - Get all orders for the current user.
+*   `GET /orders/:id` - Get a single order by ID for the current user.
+*   `PUT /orders/:id/status` - (Admin) Update the status of an order.
+*   `PUT /orders/:id/confirm-payment` - Confirm payment for an order.
+*   `PUT /orders/:id/cancel` - Cancel an order.
+*   `DELETE /orders/:id` - (Admin) Delete an order.
+
+### WishlistController
+*   `POST /wishlists` - Create a new wishlist item.
+*   `GET /wishlists` - Get all wishlist items for the current user.
+*   `GET /wishlists/:id` - Get a single wishlist item by ID for the current user.
+*   `DELETE /wishlists/:id` - Delete a wishlist item by ID for the current user.
+
+================================================================
+# 5. Payment Service (Layanan Pembayaran)
+================================================================
+
+### PaymentController
+*   `POST /payments` - Create a new payment.
+*   `GET /payments/all` - (Admin) Get all payments.
+*   `GET /payments/me` - Get all payments for the current user.
+*   `GET /payments/:id` - Get a single payment by ID (Owner or Admin).
+*   `PUT /payments/:id/status` - (Admin) Update the status of a payment.
+
+================================================================
+# 6. BFF Web (Backend-for-Frontend Web)
+================================================================
+
+### BffController
+*   `GET /dashboard` - Get user dashboard data.
+*   `GET /products/:id` - Get product by ID.
+*   `POST /products/:productId/reviews` - Create a review for a product.
+*   `GET /cart` - Get user's cart.
+*   `POST /cart/items` - Add item to cart.
+*   `PUT /cart/items/:itemId` - Update item in cart.
+*   `DELETE /cart/items/:itemId` - Remove item from cart.
+*   `GET /account/profile` - Get user profile.
+*   `PUT /account/profile` - Update user profile.
+*   `GET /account/addresses` - Get user addresses.
+*   `POST /account/addresses` - Add a new address.
+*   `PUT /account/addresses/:addressId` - Update an address.
+*   `DELETE /account/addresses/:addressId` - Remove an address.
+*   `GET /account/my-reviews` - Get all reviews by the current user.
+*   `PUT /account/addresses/:addressId/default` - Set an address as default.
+*   `GET /checkout-data` - Get checkout data.
+*   `GET /wishlist` - Get user's wishlist.
+*   `POST /wishlist` - Add item to wishlist.
+*   `DELETE /wishlist/:itemId` - Remove item from wishlist.
+*   `GET /orders` - Get user's orders.
+*   `GET /orders/:orderId` - Get order by ID.
+*   `POST /orders` - Create a new order.
+
+================================================================
+# 7. BFF Mobile (Backend-for-Frontend Mobile)
+================================================================
+
+### BffController
+*   `GET /dashboard` - Get user dashboard data.
+*   `GET /products/:id` - Get product by ID.
+*   `POST /products/:productId/reviews` - Create a review for a product.
+*   `GET /cart` - Get user's cart.
+*   `POST /cart/items` - Add item to cart.
+*   `PUT /cart/items/:itemId` - Update item in cart.
+*   `DELETE /cart/items/:itemId` - Remove item from cart.
+*   `GET /account/profile` - Get user profile.
+*   `PUT /account/profile` - Update user profile.
+*   `GET /account/addresses` - Get user addresses.
+*   `POST /account/addresses` - Add a new address.
+*   `PUT /account/addresses/:addressId` - Update an address.
+*   `DELETE /account/addresses/:addressId` - Remove an address.
+*   `GET /account/my-reviews` - Get all reviews by the current user.
+*   `PUT /account/addresses/:addressId/default` - Set an address as default.
+*   `GET /checkout-data` - Get checkout data.
+*   `GET /wishlist` - Get user's wishlist.
+*   `POST /wishlist` - Add item to wishlist.
+*   `DELETE /wishlist/:itemId` - Remove item from wishlist.
+*   `GET /orders` - Get user's orders.
+*   `GET /orders/:orderId` - Get order by ID.
+*   `POST /orders` - Create a new order.
+
+================================================================
+# 8. BFF Admin (Backend-for-Frontend Admin)
+================================================================
+
+**BASE URL (via Gateway):**
+`http://localhost:8007/api/bff-admin`
+
+**BASE URL (Direct):**
+`http://localhost:8008/bff-admin`
+
+---
+
+### 1. DASHBOARD (Summary Sistem)
+*   `GET /dashboard` - Mengambil seluruh ringkasan admin: totalUsers, totalProducts, totalOrders, totalRevenue, recentOrders.
+
+### 2. USER MANAGEMENT
+*   `GET /users` - Mendapatkan semua pengguna.
+*   `GET /users/:id` - Mendapatkan pengguna berdasarkan ID.
+*   `PUT /users/:id` - Memperbarui pengguna berdasarkan ID.
+*   `DELETE /users/:id` - Menghapus pengguna berdasarkan ID.
+*   `GET /users/:id/addresses` - Mendapatkan semua alamat pengguna berdasarkan ID.
+
+### 3. PRODUCT MANAGEMENT
+*   `GET /products` - Mendapatkan semua produk.
+*   `GET /products/:id` - Mendapatkan produk berdasarkan ID.
+*   `POST /products` - Membuat produk baru.
+*   `PUT /products/:id` - Memperbarui produk berdasarkan ID.
+*   `DELETE /products/:id` - Menghapus produk berdasarkan ID.
+*   `PUT /products/:id/stock` - Memperbarui stok produk.
+*   `GET /products/:id/reviews` - Mendapatkan semua ulasan untuk produk tertentu.
+*   `GET /products/low-stock` - Mendapatkan produk dengan stok rendah.
+
+### 4. CATEGORY MANAGEMENT
+*   `GET /categories` - Mendapatkan semua kategori.
+*   `POST /categories` - Membuat kategori baru.
+*   `GET /categories/:id` - Mendapatkan kategori berdasarkan ID.
+*   `PUT /categories/:id` - Memperbarui kategori berdasarkan ID.
+*   `DELETE /categories/:id` - Menghapus kategori berdasarkan ID.
+*   `GET /categories/:id/products` - Mendapatkan semua produk dalam kategori tertentu.
+
+### 5. ORDER MANAGEMENT
+*   `GET /orders` - Mendapatkan semua pesanan.
+*   `GET /orders/:id` - Mendapatkan pesanan berdasarkan ID.
+*   `PUT /orders/:id/status` - Memperbarui status pesanan.
+*   `DELETE /orders/:id` - Menghapus pesanan berdasarkan ID.
+
+### 6. PAYMENT MANAGEMENT
+*   `GET /payments` - Mendapatkan semua pembayaran.
+*   `GET /payments/:id` - Mendapatkan pembayaran berdasarkan ID.
+*   `PUT /payments/:id/status` - Memperbarui status pembayaran.
+*   `GET /payments/stats` - Mendapatkan statistik pembayaran.
+
+### 7. REVIEW MODERATION
+*   `GET /reviews` - Mendapatkan semua ulasan.
+*   `GET /reviews/:id` - Mendapatkan ulasan berdasarkan ID.
+*   `DELETE /reviews/:id` - Menghapus ulasan berdasarkan ID.
