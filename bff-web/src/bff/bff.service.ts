@@ -4,10 +4,11 @@ import axios, { AxiosRequestConfig } from 'axios';
 
 @Injectable()
 export class BffService {
-  private userServiceUrl: string;
-  private productServiceUrl: string;
-  private orderServiceUrl: string;
-  private paymentServiceUrl: string;
+  // 1. Tambahkan tanda seru (!) agar TS tahu ini akan diinisialisasi
+  private userServiceUrl!: string;
+  private productServiceUrl!: string;
+  private orderServiceUrl!: string;
+  private paymentServiceUrl!: string;
 
   constructor(private readonly configService: ConfigService) {
     // Initialize service URLs from environment variables
@@ -17,12 +18,6 @@ export class BffService {
     this.paymentServiceUrl = this.configService.get('PAYMENT_SERVICE_URL')!;
   }
 
-  /**
-   * Creates a standard axios configuration object, including the internal secret
-   * and the user's authorization token if provided.
-   * @param authHeader The 'Authorization' header from the incoming request.
-   * @returns A complete AxiosRequestConfig object.
-   */
   private _getAxiosConfig(authHeader?: string): AxiosRequestConfig {
     const headers: Record<string, string> = {
       'Content-Type': 'application/json',
@@ -40,41 +35,55 @@ export class BffService {
     try {
       const axiosConfig = this._getAxiosConfig(authHeader);
 
-      const [user, orders, wishlist] = await Promise.all([
-        axios.get(`${this.userServiceUrl}/users/profile`, axiosConfig).then(r => r.data),
-        axios.get(`${this.orderServiceUrl}/orders/my-orders`, axiosConfig).then(r => r.data),
-        axios.get(`${this.orderServiceUrl}/wishlists`, axiosConfig).then(r => r.data).catch(() => []), // fallback
+      const results = await Promise.allSettled([
+        axios.get(`${this.userServiceUrl}/users/profile`, axiosConfig),
+        axios.get(`${this.orderServiceUrl}/orders/my-orders`, axiosConfig),
+        axios.get(`${this.orderServiceUrl}/wishlists`, axiosConfig),
       ]);
+
+      // 2. Beri (as any) pada results
+      const user = results[0].status === 'fulfilled' ? (results[0] as any).value.data : null;
+      const orders = results[1].status === 'fulfilled' ? (results[1] as any).value.data : [];
+      const wishlist = results[2].status === 'fulfilled' ? (results[2] as any).value.data : [];
 
       return {
         user,
         orders,
         wishlist,
       };
-    } catch (error) {
-      // We can log the internal error for debugging
+
+    } catch (e) {
+      // 3. Ubah e menjadi any agar TS tidak bingung
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
-      throw new Error('❌ Failed to fetch dashboard data');
+
+      return {
+        user: null,
+        orders: [],
+        wishlist: [],
+      };
     }
   }
 
   async getProductById(id: string) {
-    try {
-      const axiosConfig = this._getAxiosConfig();
-      const [product, reviews] = await Promise.all([
-        axios.get(`${this.productServiceUrl}/products/${id}`, axiosConfig).then(r => r.data),
-        axios.get(`${this.productServiceUrl}/products/${id}/all-reviews`, axiosConfig).then(r => r.data).catch(() => []), // fallback
-      ]);
+    const axiosConfig = this._getAxiosConfig();
 
-      // For web, we return all reviews without transformation
-      return {
-        ...product,
-        reviews,
-      };
-    } catch (error) {
-      console.error('BFF Error:', error.response?.data || error.message);
-      throw new Error('❌ Failed to fetch product data');
+    const results = await Promise.allSettled([
+      axios.get(`${this.productServiceUrl}/products/${id}`, axiosConfig),
+      axios.get(`${this.productServiceUrl}/products/${id}/all-reviews`, axiosConfig),
+    ]);
+
+    const product = results[0].status === 'fulfilled' ? (results[0] as any).value.data : null;
+    const reviews = results[1].status === 'fulfilled' ? (results[1] as any).value.data : [];
+
+    if (!product) {
+      throw new BadRequestException('Produk tidak ditemukan.');
     }
+
+    return {
+      ...product,
+      reviews,
+    };
   }
 
   async getCart(authHeader: string) {
@@ -88,14 +97,15 @@ export class BffService {
         return [];
       }
 
-      const productDetailsPromises = cart.map(item =>
+      // 4. Tambahkan tipe (item: any) pada parameter map
+      const productDetailsPromises = cart.map((item: any) =>
         axios.get(`${this.productServiceUrl}/products/${item.productId}`, axiosConfigWithoutAuth)
           .then(r => r.data)
           .catch(() => null)
       );
       const products = await Promise.all(productDetailsPromises);
 
-      const enrichedCart = cart.map((item, index) => {
+      const enrichedCart = cart.map((item: any, index: number) => {
         const product = products[index];
         return {
           ...item,
@@ -107,7 +117,8 @@ export class BffService {
       });
 
       return enrichedCart;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       throw new Error('❌ Failed to fetch cart data');
     }
@@ -129,7 +140,8 @@ export class BffService {
 
       const cartItem = await axios.post(`${this.orderServiceUrl}/carts`, addToCartDto, axiosConfigWithAuth).then(r => r.data);
       return cartItem;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 400) {
         throw new BadRequestException(error.response.data.message || 'Permintaan tidak valid.');
@@ -157,7 +169,8 @@ export class BffService {
 
       const updatedCartItem = await axios.put(`${this.orderServiceUrl}/carts/${itemId}`, updateDto, axiosConfig).then(r => r.data);
       return updatedCartItem;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 400) {
         throw new BadRequestException(error.response.data.message || 'Permintaan tidak valid.');
@@ -170,7 +183,8 @@ export class BffService {
     try {
       await axios.delete(`${this.orderServiceUrl}/carts/${itemId}`, this._getAxiosConfig(authHeader));
       return { message: 'Item keranjang berhasil dihapus.' };
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 404) {
         throw new BadRequestException('Item keranjang tidak ditemukan.');
@@ -179,13 +193,12 @@ export class BffService {
     }
   }
 
-  // --- Profile Management Methods ---
-
   async getProfile(authHeader: string) {
     try {
       const profile = await axios.get(`${this.userServiceUrl}/users/profile`, this._getAxiosConfig(authHeader)).then(r => r.data);
       return profile;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 401) {
         throw new BadRequestException('Sesi tidak valid atau telah berakhir.');
@@ -198,7 +211,8 @@ export class BffService {
     try {
       const response = await axios.put(`${this.userServiceUrl}/users/profile/update`, updateProfileDto, this._getAxiosConfig(authHeader)).then(r => r.data);
       return response;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 400) {
         throw new BadRequestException(error.response.data.message || 'Data profil tidak valid.');
@@ -214,7 +228,8 @@ export class BffService {
     try {
       const addresses = await axios.get(`${this.userServiceUrl}/users/profile/addresses`, this._getAxiosConfig(authHeader)).then(r => r.data);
       return addresses;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 401) {
         throw new BadRequestException('Sesi tidak valid atau telah berakhir.');
@@ -227,7 +242,8 @@ export class BffService {
     try {
       const newAddress = await axios.post(`${this.userServiceUrl}/users/profile/addresses`, addAddressDto, this._getAxiosConfig(authHeader)).then(r => r.data);
       return newAddress;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 400) {
         throw new BadRequestException(error.response.data.message || 'Data alamat tidak valid.');
@@ -243,7 +259,8 @@ export class BffService {
     try {
       const updatedAddress = await axios.put(`${this.userServiceUrl}/users/profile/addresses/${addressId}`, updateAddressDto, this._getAxiosConfig(authHeader)).then(r => r.data);
       return updatedAddress;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 400 || error.response?.status === 404) {
         throw new BadRequestException(error.response.data.message || 'Data alamat tidak valid atau alamat tidak ditemukan.');
@@ -259,7 +276,8 @@ export class BffService {
     try {
       await axios.delete(`${this.userServiceUrl}/users/profile/addresses/${addressId}`, this._getAxiosConfig(authHeader));
       return { message: 'Alamat berhasil dihapus.' };
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 400 || error.response?.status === 404) {
         throw new BadRequestException(error.response.data.message || 'Alamat tidak ditemukan atau tidak dapat dihapus.');
@@ -270,8 +288,6 @@ export class BffService {
       throw new BadRequestException('Gagal menghapus alamat.');
     }
   }
-
-  // --- Product Review Service Methods ---
 
   async createReview(authHeader: string, productId: string, createReviewDto: { rating: number; comment: string }) {
     try {
@@ -288,7 +304,8 @@ export class BffService {
 
       const response = await axios.post(`${this.productServiceUrl}/products/${productId}/reviews`, createReviewDto, axiosConfig);
       return response.data;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error creating review:', error.response?.data || error.message);
       if (error.response?.status === 403) {
         throw new ForbiddenException(error.response?.data?.message || 'Anda tidak diizinkan untuk melakukan aksi ini.');
@@ -301,7 +318,8 @@ export class BffService {
     try {
       const response = await axios.get(`${this.productServiceUrl}/products/reviews/me`, this._getAxiosConfig(authHeader));
       return response.data;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error getting my reviews:', error.response?.data || error.message);
       throw new BadRequestException('Gagal mengambil daftar ulasan.');
     }
@@ -311,7 +329,8 @@ export class BffService {
     try {
       const updatedAddress = await axios.put(`${this.userServiceUrl}/users/profile/addresses/${addressId}/default`, {}, this._getAxiosConfig(authHeader)).then(r => r.data);
       return updatedAddress;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error:', error.response?.data || error.message);
       if (error.response?.status === 400 || error.response?.status === 404) {
         throw new BadRequestException(error.response.data.message || 'Alamat tidak ditemukan atau tidak dapat diatur sebagai default.');
@@ -328,7 +347,8 @@ export class BffService {
 
     try {
       cart = await this.getCart(authHeader);
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error(
         'BFF Error fetching cart for checkout:',
         error.response?.data || error.message,
@@ -340,7 +360,8 @@ export class BffService {
 
     try {
       addresses = await this.getAddresses(authHeader);
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error(
         'BFF Error fetching addresses for checkout:',
         error.response?.data || error.message,
@@ -356,8 +377,6 @@ export class BffService {
     };
   }
 
-  // --- Wishlist Service Methods ---
-
   async getWishlist(authHeader: string) {
     try {
       const axiosConfigWithAuth = this._getAxiosConfig(authHeader);
@@ -368,7 +387,7 @@ export class BffService {
         return [];
       }
 
-      const enrichedItemsPromises = wishlist.map(item =>
+      const enrichedItemsPromises = wishlist.map((item: any) =>
         axios.get(`${this.productServiceUrl}/products/${item.productId}`, axiosConfigWithoutAuth)
           .then(response => ({
             ...item,
@@ -381,16 +400,19 @@ export class BffService {
       );
 
       return Promise.all(enrichedItemsPromises);
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error getting wishlist:', error.response?.data || error.message);
       throw new BadRequestException('Gagal mengambil data wishlist.');
     }
   }
+  
   async addToWishlist(authHeader: string, { productId }: { productId: string }) {
     try {
       const response = await axios.post(`${this.orderServiceUrl}/wishlists`, { productId }, this._getAxiosConfig(authHeader));
       return response.data;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error adding to wishlist:', error.response?.data || error.message);
       throw new BadRequestException(error.response?.data?.message || 'Gagal menambahkan item ke wishlist.');
     }
@@ -400,7 +422,8 @@ export class BffService {
     try {
       await axios.delete(`${this.orderServiceUrl}/wishlists/${itemId}`, this._getAxiosConfig(authHeader));
       return { message: 'Item berhasil dihapus dari wishlist.' };
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error removing from wishlist:', error.response?.data || error.message);
       throw new BadRequestException(error.response?.data?.message || 'Gagal menghapus item dari wishlist.');
     }
@@ -410,7 +433,8 @@ export class BffService {
     try {
       const response = await axios.get(`${this.orderServiceUrl}/orders/my-orders`, this._getAxiosConfig(authHeader));
       return response.data;
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error getting orders:', error.response?.data || error.message);
       throw new BadRequestException('Gagal mengambil daftar pesanan.');
     }
@@ -426,55 +450,87 @@ export class BffService {
         return order;
       }
 
-      const enrichedItemsPromises = order.items.map(item => {
-        return axios.get(`${this.productServiceUrl}/products/${item.productId}`, axiosConfigWithoutAuth)
-          .then(response => ({
-            ...item,
-            product: response.data,
-          }))
-          .catch(() => ({
-            ...item,
-            product: { name: 'Produk tidak lagi tersedia' },
-          }));
-      });
+      const enrichedItemsResults = await Promise.allSettled(
+        order.items.map((item: any) =>
+          axios.get(`${this.productServiceUrl}/products/${item.productId}`, axiosConfigWithoutAuth)
+        )
+      );
 
-      const enrichedItems = await Promise.all(enrichedItemsPromises);
+      const enrichedItems = enrichedItemsResults.map((res, index) => {
+        const item = order.items[index];
+
+        if (res.status === 'fulfilled') {
+          return {
+            ...item,
+            product: (res as any).value.data,
+          };
+        }
+
+        return {
+          ...item,
+          product: { name: 'Produk tidak tersedia' },
+        };
+      });
 
       return {
         ...order,
         items: enrichedItems,
       };
-    } catch (error) {
+    } catch (e) {
+      const error = e as any;
       console.error('BFF Error getting order by ID:', error.response?.data || error.message);
       throw new BadRequestException(error.response?.data?.message || 'Gagal mengambil detail pesanan.');
     }
   }
 
-  async createOrder(authHeader: string, createOrderDto: { shippingAddressId?: string, paymentMethod: string }) {
+  async createOrder(
+    authHeader: string,
+    createOrderDto: { shippingAddressId?: string; paymentMethod: string }
+  ) {
+    const axiosConfig = this._getAxiosConfig(authHeader);
+
+    let orderResponse;
+    let paymentResponse = null;
+
     try {
-      const axiosConfig = this._getAxiosConfig(authHeader);
+      orderResponse = await axios
+        .post(
+          `${this.orderServiceUrl}/orders`,
+          { shippingAddressId: createOrderDto.shippingAddressId },
+          axiosConfig
+        )
+        .then((r) => r.data);
 
-      const orderResponse = await axios.post(`${this.orderServiceUrl}/orders`, {
-        shippingAddressId: createOrderDto.shippingAddressId,
-      }, axiosConfig).then(r => r.data);
+    } catch (e) {
+      const error = e as any;
+      console.error('Order Error:', error.response?.data || error.message);
 
-      const orderId = orderResponse.id;
-
-      const paymentResponse = await axios.post(`${this.paymentServiceUrl}/payments`, {
-        orderId: orderId,
-        method: createOrderDto.paymentMethod,
-      }, axiosConfig).then(r => r.data);
-
-      return {
-        order: orderResponse,
-        payment: paymentResponse,
-      };
-    } catch (error) {
-      console.error('BFF Error creating order:', error.response?.data || error.message);
-      if (error.response?.status === 400) {
-        throw new BadRequestException(error.response.data.message || 'Permintaan tidak valid.');
-      }
-      throw new BadRequestException('Gagal membuat pesanan.');
+      throw new BadRequestException(
+        error.response?.data?.message || 'Gagal membuat pesanan.'
+      );
     }
+
+    try {
+      paymentResponse = await axios
+        .post(
+          `${this.paymentServiceUrl}/payments`,
+          {
+            orderId: orderResponse.id,
+            method: createOrderDto.paymentMethod,
+          },
+          axiosConfig
+        )
+        .then((r) => r.data);
+
+    } catch (e) {
+      const error = e as any;
+      console.error('Payment Error:', error.response?.data || error.message);
+    }
+
+    return {
+      order: orderResponse,
+      payment: paymentResponse, 
+      paymentStatus: paymentResponse ? 'success' : 'failed',
+    };
   }
 }

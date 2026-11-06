@@ -1,0 +1,5002 @@
+{
+  "info": {
+    "_postman_id": "41473b26-767b-4cd8-88f3-0b99b0e2a92f",
+    "name": "E-Commerce",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User-Service",
+      "item": [
+        {
+          "name": "Address (User)",
+          "item": [
+            {
+              "name": "Create New Address by User Token",
+              "id": "b8bd5d9f-c916-4a5c-91ff-8a0f49de45c1",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzQ0MzkzMywiZXhwIjoxNzYzNDQ3NTMzfQ.Kve4vX-aifJUGoZDBb4ju8vDpNktKgKSver4QjE4_tQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "    {\n        \"label\": \"Rumah\",\n        \"recipientName\": \"Nama Penerima\",\n        \"phoneNumber\": \"081234567890\",\n        \"street\": \"Jl. Kenanga No. 122\",\n        \"city\": \"Bandung\",\n        \"province\": \"Jawa Barat\",\n        \"postalCode\": \"11100\",\n        \"isDefault\": true\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8001/users/profile/addresses",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "profile",
+                    "addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Adresses by Token",
+              "id": "c0087b67-563b-46c1-81d8-2fa32e39846c",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NTExNzUyOCwiZXhwIjoxNzY1MTIxMTI4fQ.IxXRkOp_NwkfohuCfzVkbxMiSTJeITjII-jJDlT7HdA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/users/profile/addresses",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "profile",
+                    "addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Address",
+              "id": "16220301-10c2-4192-b74f-b295e04163fd",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzQ0MzkzMywiZXhwIjoxNzYzNDQ3NTMzfQ.Kve4vX-aifJUGoZDBb4ju8vDpNktKgKSver4QjE4_tQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"label\": \"Kantor Pusat\",\n    \"recipientName\" : \"abc\",\n    \"isDefault\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8001/users/profile/addresses/691974f165f426b065fecde3",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "profile",
+                    "addresses",
+                    "691974f165f426b065fecde3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Default Address by ID",
+              "id": "80e6ce2e-cd6e-4a82-9914-be714e17bfa4",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzQ0MzkzMywiZXhwIjoxNzYzNDQ3NTMzfQ.Kve4vX-aifJUGoZDBb4ju8vDpNktKgKSver4QjE4_tQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/users/profile/addresses/691974f165f426b065fecde3/default",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "profile",
+                    "addresses",
+                    "691974f165f426b065fecde3",
+                    "default"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Address",
+              "id": "39d37d42-9f02-408a-92b9-cade4b7ea20f",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzQ0MzkzMywiZXhwIjoxNzYzNDQ3NTMzfQ.Kve4vX-aifJUGoZDBb4ju8vDpNktKgKSver4QjE4_tQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/users/profile/addresses/6919754f168bce99be7b4fc8",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "profile",
+                    "addresses",
+                    "6919754f168bce99be7b4fc8"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "f5d5a963-a9d2-4c37-a7d0-81f7b917dbc8"
+        },
+        {
+          "name": "Password (User)",
+          "item": [
+            {
+              "name": "Forgot Password",
+              "id": "2ed7b64f-c545-408b-af01-606f3545fe92",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\" : \"mydei@gmail.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8001/users/forgot-password",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "forgot-password"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Reset Password",
+              "id": "d02dee01-abd5-4817-baa3-d46c780501da",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"password\" : \"abc123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8001/users/reset-password/7278b78689469fb1a3278c75b311e90543991915da2e8fb8b1e59122ce14c167",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "reset-password",
+                    "7278b78689469fb1a3278c75b311e90543991915da2e8fb8b1e59122ce14c167"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "9b992d1d-ce07-47d8-8539-99a45ac8af7f"
+        },
+        {
+          "name": "Admin Only",
+          "item": [
+            {
+              "name": "Edit Profile by Admin",
+              "id": "2a83eef7-4964-45fc-8297-1ee196e4721c",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MDI3NDExMSwiZXhwIjoxNzYwMjc3NzExfQ.CD3GJzhz6xylAmHO6LedjYnjbv-7bLsRfiqo_FMeROU",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\" : \"jawa\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8001/users/68df78fb1fa97b3fc43db588",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "68df78fb1fa97b3fc43db588"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Account by Admin",
+              "id": "4e48ac01-bb47-416f-9f11-2c93b2ba7da2",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MDg0OTY2MSwiZXhwIjoxNzYwODUzMjYxfQ.P5dDu1uF6M3NVbJJHhhYOX7OawktDAvhZ01C0D3oLd4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/users/68f46edd2fe6d99ea8efa039",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "68f46edd2fe6d99ea8efa039"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Account by Admin",
+              "id": "558f3abc-bd5b-4916-88da-b0b88dc1f36b",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzQ0NDIzNiwiZXhwIjoxNzYzNDQ3ODM2fQ.LSRRiN37F_j1snL7b8goR5579h729O31cw_nph_02P8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/users/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Account by ID by Admin",
+              "id": "cac1a43c-25c4-49c9-9274-673f01b295bb",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzM4NjUwMSwiZXhwIjoxNzYzMzkwMTAxfQ.Kgz3mGYvDXm4eGmj568r_KNxv2ZJsrxtHgwOiegemkU",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8001/users/68df78fb1fa97b3fc43db588",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8001",
+                  "path": [
+                    "users",
+                    "68df78fb1fa97b3fc43db588"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "8d01a2d5-187d-4e13-9862-7402ae401d44"
+        },
+        {
+          "name": "Register Account",
+          "id": "3c201516-14b3-496d-b762-42616f9991ca",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\" : \"ABCDEFGHI\",\n    \"email\" : \"mydei@gmail.com\",\n    \"password\" : \"phainon\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "id": "55ce87da-cd56-4fb6-b1af-c984e5bf0a86",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\" : \"mydei@gmail.com\",\n    \"password\" : \"abc123\"\n\n    // \"email\": \"test@example.com\",\n    // \"password\": \"password123\"\n\n    // \"email\": \"sherlylily04@gmail.com\",\n    // \"password\": \"sherlyseptiani04\"\n\n    // \"email\": \"jawa@gmail.com\",\n    // \"password\": \"madura\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Admin",
+          "id": "cdc9916b-e4da-42da-be0f-e6e92b71d91a",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"admin123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Account by Token",
+          "id": "0c270e41-88dc-470b-9f91-59465a3ae2c7",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzM4NzY1MywiZXhwIjoxNzYzMzkxMjUzfQ.YgEPJmCbpdkZxuoK0eZwOJsVenBmeR2BOOSNh3P8jv8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/users/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "users",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edit Profile",
+          "id": "bc5cfdcd-f362-4b86-bf9d-daa856044dbb",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2Mjk2OTI4OCwiZXhwIjoxNzYyOTcyODg4fQ.m6rBIk3s5dXHBvaX6HY_GyKuDiWDB1bwQR8MtdWGpIY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\" : \"jawa\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/users/profile/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "users",
+                "profile",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Account",
+          "id": "276c3aee-11fb-4e72-866b-c6753d703f41",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGY0NmYzNjJmZTZkOTllYThlZmEwNDIiLCJlbWFpbCI6Imphd2FAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjA4NDk3MjEsImV4cCI6MTc2MDg1MzMyMX0.BlYaiPRm1RU6QLz1ManPTZdHT96W5Ihv8kwFMb8YJ2M",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/users/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "users",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "c8464913-2cac-4b91-a332-4b2592283d6b"
+    },
+    {
+      "name": "Product-Service",
+      "item": [
+        {
+          "name": "Products",
+          "item": [
+            {
+              "name": "Admin Only",
+              "item": [
+                {
+                  "name": "Create Product",
+                  "id": "9dc0ea60-afdb-44dc-8a7d-ff3ff5ee3d39",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NDA1ODUzOSwiZXhwIjoxNzY0MDYyMTM5fQ.ATvPDPNxFrqTJd8QIErSXe2YBkgUDh0edtmnM88paOg",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\": \"Dress Mini Lucu Korea Y2K\",\n    \"description\": \"Heyy uuuu is this illegal?\",\n    \"price\": 20000,\n    \"stock\": 10,\n    \"categoryId\": \"68887ab62020a9104385498e\",\n    \"imageUrl\": \"https://example.com/gambar-produk-rak.jpg\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8003/products/",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8003",
+                      "path": [
+                        "products",
+                        ""
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Product",
+                  "id": "9bbf4237-73ad-4960-9491-2987b9fbc35d",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcwOTAxNSwiZXhwIjoxNzYzNzEyNjE1fQ.4ZH43dBI_RUhN4f5_6etR6fTKmWmAjwTtxx5WO8UfxY",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"category\" : \"68887ab62020a9104385498e\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8003/products/68c6aa10a70ba5cf7a700799",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8003",
+                      "path": [
+                        "products",
+                        "68c6aa10a70ba5cf7a700799"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Stock",
+                  "id": "763d6bb5-e601-4545-a0ae-c013e7cb11cc",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcwNDQxOSwiZXhwIjoxNzYzNzA4MDE5fQ.hiWGBZ9VBIT5sdo9DsAwe_-2Q-ZMYofCLOh5Dl6sdk4",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"quantity\" : 1,\n    \"type\" : \"increase\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8003/products/690d896fae4d50451f8a7b86/stock",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8003",
+                      "path": [
+                        "products",
+                        "690d896fae4d50451f8a7b86",
+                        "stock"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Product",
+                  "id": "99382efa-d5df-4a65-ae5d-995f8a99936a",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcwNDQxOSwiZXhwIjoxNzYzNzA4MDE5fQ.hiWGBZ9VBIT5sdo9DsAwe_-2Q-ZMYofCLOh5Dl6sdk4",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8003/products/692002704e0c2013ef2e041e",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8003",
+                      "path": [
+                        "products",
+                        "692002704e0c2013ef2e041e"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "id": "48b5fe6b-604a-4c9a-a5ba-8b22fc82df14"
+            },
+            {
+              "name": "Get All Product",
+              "id": "58ad33da-fa1c-4f12-b4fc-6a300fa7b299",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/products/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "products",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Product by ID",
+              "id": "5c55605f-f11c-4a12-812e-57601565955e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"quantity\" : \"5\",\n    \"type\" : \"increase\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8003/products/691da24abbb94736e0b87d6c",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "products",
+                    "691da24abbb94736e0b87d6c"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "2abd71fe-7c97-4c5a-962d-847e00b487f7"
+        },
+        {
+          "name": "Categories",
+          "item": [
+            {
+              "name": "Admin Only",
+              "item": [
+                {
+                  "name": "Create New Category",
+                  "id": "f68a7e1b-e2fc-412b-9676-42ca7ca94e39",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzY1Nzk4NSwiZXhwIjoxNzYzNjYxNTg1fQ.xA8wVTyPxKj7hcRL62fVaW3pzAc6yfsA_7oMwcPfjzY",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\" : \"Kesehatan Tubuh\",\n    \"description\" : \"Ya untuk sehat\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8003/categories",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8003",
+                      "path": [
+                        "categories"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Update Category by ID",
+                  "id": "7f54c3c2-3b8d-4ce4-8e7d-7a67149064eb",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzU0OTcxNiwiZXhwIjoxNzYzNTUzMzE2fQ.2RMxURt0yPeKVI1I3yE4UVWx7FpiJirurElssK0zNv4",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n    \"name\" : \"Rumah Tangga\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8003/categories/68887ad62020a91043854996",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8003",
+                      "path": [
+                        "categories",
+                        "68887ad62020a91043854996"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "Delete Category by ID",
+                  "id": "7de0d620-6f9b-4394-bb99-c057ae66e1ec",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzY1Nzk4NSwiZXhwIjoxNzYzNjYxNTg1fQ.xA8wVTyPxKj7hcRL62fVaW3pzAc6yfsA_7oMwcPfjzY",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "http://localhost:8003/categories/691f4929fd9cbb69c890a182",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8003",
+                      "path": [
+                        "categories",
+                        "691f4929fd9cbb69c890a182"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ],
+              "id": "1f241e4b-4c47-4e43-96b1-662d509e7091"
+            },
+            {
+              "name": "Get All Categories",
+              "id": "77ac865e-b474-445c-b6f5-6baa9d80f2cb",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/categories",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Category by ID",
+              "id": "ab218219-a602-48bc-ae21-69ea49759488",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/categories/68887ab62020a9104385498e",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "categories",
+                    "68887ab62020a9104385498e"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Products by Category",
+              "id": "dfb69249-3a03-40df-ae56-956f8cb41353",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/categories/68887ab62020a9104385498e/products",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "categories",
+                    "68887ab62020a9104385498e",
+                    "products"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "5c06a9a0-541b-4c08-982e-d44956e94530"
+        },
+        {
+          "name": "Reviews",
+          "item": [
+            {
+              "name": "Get All Reviews by One ProductID",
+              "id": "9bd6fb37-9b2c-4ace-87cf-83fa2a028981",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/products/68c6a98ba70ba5cf7a700796/reviews",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "products",
+                    "68c6a98ba70ba5cf7a700796",
+                    "reviews"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Review by ID",
+              "id": "3d9e273e-45c9-4769-8485-9f9b1ba4acd4",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/products/reviews/68ecd6f832d7f91135c134ea",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "products",
+                    "reviews",
+                    "68ecd6f832d7f91135c134ea"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Reviews by User ID",
+              "id": "414bd5a4-afd0-488a-8138-c0f2ff27c9d5",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzcwOTAxNSwiZXhwIjoxNzYzNzEyNjE1fQ.4ZH43dBI_RUhN4f5_6etR6fTKmWmAjwTtxx5WO8UfxY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/products/reviews/me",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "products",
+                    "reviews",
+                    "me"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Review",
+              "id": "6067f2a3-ccd0-473e-9e10-27102ee945cb",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzYyNzIwNSwiZXhwIjoxNzYzNjMwODA1fQ.vo5eBJBwxaGi0wUUdOkUt_SiiRoScqCUfcrDV8beM6c",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"rating\" : 5,\n    \"comment\" : \"Keren bgt wehhh gokill\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8003/products/68c6a98ba70ba5cf7a700796/reviews",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "products",
+                    "68c6a98ba70ba5cf7a700796",
+                    "reviews"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Review by ID",
+              "id": "798dcd75-5c4a-47c4-862d-b7da37f265e5",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MzYyNzIwNSwiZXhwIjoxNzYzNjMwODA1fQ.vo5eBJBwxaGi0wUUdOkUt_SiiRoScqCUfcrDV8beM6c",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/products/reviews/691ed1764c9f1fea17903a7f",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "products",
+                    "reviews",
+                    "691ed1764c9f1fea17903a7f"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get ALL REVIEWS",
+              "id": "46a40a49-7934-4273-aa20-3bda5d308b8d",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "e58f8314-c032-43d2-ac6b-f59dba4d9d49"
+        }
+      ],
+      "id": "e08d1e85-d2c0-416b-80b6-830794d94cf8"
+    },
+    {
+      "name": "Order-Service",
+      "item": [
+        {
+          "name": "Carts",
+          "item": [
+            {
+              "name": "Create New Cart",
+              "id": "c11fb09e-d394-4a49-9cc3-6e90e6ecf386",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDA1ODUxNCwiZXhwIjoxNzY0MDYyMTE0fQ.YfnHpLiDaQ6oh8P-J9l2lB9jl8uCcIh9rqetVnvno4Y",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    // \"userId\" : \"68df78fb1fa97b3fc43db588\",\n    // \"productId\" : \"68ecab05fa2f8f0b57e89a60\",\n    // \"quantity\" : \"\"\n\n    \"productId\" : \"692565c84981456867adee35\",\n    // \"productId\" : \"68c6aa80a70ba5cf7a70079f\",\n    // \"productId\" : \"68c6aac4a70ba5cf7a7007a1\",\n    // \"productId\" : \"68c6b93da13b82a818508587\",\n    // \"productId\" : \"68f9ffb45b1ac9de1c1262eb\",\n    \"quantity\" : 3\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8002/carts",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "carts"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Carts by UserID",
+              "id": "42592750-888a-47f4-acaf-e328af3e3e4d",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2Mjg1MTkzMCwiZXhwIjoxNzYyODU1NTMwfQ.OTza8D2AgtjAH5DCXkGOJKxVfZMxO8R-rytpiodYyUo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/carts/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "carts",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Cart by ID",
+              "id": "925af96c-d15d-4139-98e0-dc3e3b3061e7",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjMyNDczMywiZXhwIjoxNzYyMzI4MzMzfQ.EN4Oiqc6utgEZtu3DdxkH3GYpKX4Eo2yB8qhCIdKcy4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/carts/68ecd76bcd190cd498584b8e",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "carts",
+                    "68ecd76bcd190cd498584b8e"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Cart Quantity",
+              "id": "3419ec3e-3e54-40cd-80e5-e351f387f5da",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjMyMjQ1MCwiZXhwIjoxNzYyMzI2MDUwfQ.ukT26pTDFaOniQdE_R4IQpPJFXQ7hjuYapVVEklsAqk",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"quantity\" : 2\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8002/carts/690af15a96e25bad0a1ce845",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "carts",
+                    "690af15a96e25bad0a1ce845"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Cart (E)",
+              "id": "637bc7a6-1d20-4530-b7c4-bee215ffced6",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MjQ5NDIxNCwiZXhwIjoxNzYyNDk3ODE0fQ.q6l5vsiGhhWOLJOt74AR2JR5vhg_hfKNJX2WFSM4t9Q",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/carts/6905f8b9d53093c95e5cc3d9",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "carts",
+                    "6905f8b9d53093c95e5cc3d9"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "62d5f345-ee06-4b4e-9cbf-e67014d8f12c"
+        },
+        {
+          "name": "Wishlist",
+          "item": [
+            {
+              "name": "Create Wishlist",
+              "id": "a8cce017-f547-4a04-bcfc-9bd89b2a5767",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjMyOTMxMCwiZXhwIjoxNzYyMzMyOTEwfQ.i3jXVVebUi_cszclZ0-kMOj9CS4f2vHLQcWvvFfYkYY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"userId\" : \"68df78fb1fa97b3fc43db588\",\n    \"productId\" : \"68c6a98ba70ba5cf7a700796\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8002/wishlists",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "wishlists"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Wishlists",
+              "id": "86e5a4b3-564a-4887-a543-1bd4bc61cde1",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjMyOTMxMCwiZXhwIjoxNzYyMzMyOTEwfQ.i3jXVVebUi_cszclZ0-kMOj9CS4f2vHLQcWvvFfYkYY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/wishlists/",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "wishlists",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Wishlists by ID",
+              "id": "85062ceb-6c35-4332-b5bf-32532142214d",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjMyOTMxMCwiZXhwIjoxNzYyMzMyOTEwfQ.i3jXVVebUi_cszclZ0-kMOj9CS4f2vHLQcWvvFfYkYY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/wishlists/690b0403f59fec8b3b55dcb3",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "wishlists",
+                    "690b0403f59fec8b3b55dcb3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Wishlist",
+              "id": "307e5098-0a94-4238-9eda-5a2d4e7a6506",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjMyOTMxMCwiZXhwIjoxNzYyMzMyOTEwfQ.i3jXVVebUi_cszclZ0-kMOj9CS4f2vHLQcWvvFfYkYY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/wishlists/68edcec4f763c792932ee7ec",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "wishlists",
+                    "68edcec4f763c792932ee7ec"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "ab6d48ed-e979-4a25-a3a2-dadb87310f61"
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "Create Order by CartID",
+              "id": "8ea0d456-5aeb-4171-a55c-ebb34d9312b9",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDA1ODUxNCwiZXhwIjoxNzY0MDYyMTE0fQ.YfnHpLiDaQ6oh8P-J9l2lB9jl8uCcIh9rqetVnvno4Y",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8002/orders",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Order by UserID",
+              "id": "f86de6cc-3716-4518-8bd3-ac5e0a9090ec",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2Mzk4MjkzMSwiZXhwIjoxNzYzOTg2NTMxfQ.zIBZWA9uy7xm8nP6sJ5_TSDx-_SQdenMt6QZrz_vyag",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/orders/my-orders",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "orders",
+                    "my-orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Order by ID",
+              "id": "a8abcf75-04b9-43d7-87eb-162fa28dd6f9",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjQ5MTg5OCwiZXhwIjoxNzYyNDk1NDk4fQ.Fk5C0ac34CKXoPRRKjkdwIyJ-bdQVedZptc3qMhIDl4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/orders/690d7ba82254415bae22f8dc",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "orders",
+                    "690d7ba82254415bae22f8dc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Status Order",
+              "id": "0c60ae03-8cd2-400a-8d6f-1b10035cea54",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MjUwMDgyOCwiZXhwIjoxNzYyNTA0NDI4fQ.4MAQlwA3ODiXDDTFLQTTegi7-spXuqgHBvRnUmxbGkw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\" : \"processing\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8002/orders/690da17e8983c805651c97b4/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "orders",
+                    "690da17e8983c805651c97b4",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Cancel Order by ID",
+              "id": "0bf6a0cb-5bbf-43d3-ad8c-012f05052492",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2MjUwMDgyNiwiZXhwIjoxNzYyNTA0NDI2fQ.4o9o8LERKs3pmdtqfKqtKNVEuTNly1OUP6Tg1IoGpts",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/orders/69120b7defeb7e1b402739eb/cancel",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "orders",
+                    "69120b7defeb7e1b402739eb",
+                    "cancel"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Order",
+              "id": "b7a78509-1cbd-450d-beb8-71b547528625",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2Mzk4Mjk4OCwiZXhwIjoxNzYzOTg2NTg4fQ.z5ccJuHPeFZxHHv9JpsoywqDhSmGi3uw7fCQFWTPIkU",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8002/orders/69120b7defeb7e1b402739eb",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8002",
+                  "path": [
+                    "orders",
+                    "69120b7defeb7e1b402739eb"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "3d2bfd2b-2fea-474c-8306-8345c07c734e"
+        }
+      ],
+      "id": "9a70cea9-5bca-4844-b22b-ac062bc3e1a1"
+    },
+    {
+      "name": "Payment-Service",
+      "item": [
+        {
+          "name": "Create Payment",
+          "id": "aecf4d8c-094f-432a-9598-ecfab1527000",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2Mjg1MjA0MCwiZXhwIjoxNzYyODU1NjQwfQ.4Kp5EH_f-Z6KXzixSFxGA22v6WSx3jI_JuFlKeyO8m4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"orderId\": \"6912fcb4efeb7e1b40273a3c\",\n    \"method\": \"credit_card\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8004/payments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8004",
+              "path": [
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Payment by UserID",
+          "id": "f5da5692-5b63-488d-8726-29c62461e026",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2Mjg1MjEwNiwiZXhwIjoxNzYyODU1NzA2fQ.toG8ZdIJw81qKPmUdw3N98dPUoWtLsMw0vfnl37qU_s",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8004/payments/user/68df78fb1fa97b3fc43db588",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8004",
+              "path": [
+                "payments",
+                "user",
+                "68df78fb1fa97b3fc43db588"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment by ID",
+          "id": "2f07e75c-821e-46db-95fe-3accb7f5f271",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2Mjg1MjE0NiwiZXhwIjoxNzYyODU1NzQ2fQ.N6th5kP9vabzAgyQp3O5RdDioFopOYn-fpc6m2CD_yw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8004/payments/68ee503f7eaa0763545d12c8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8004",
+              "path": [
+                "payments",
+                "68ee503f7eaa0763545d12c8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Payment for Admin",
+          "id": "8deb5582-d7b7-4d79-895f-67cb72cb90a7",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2Mjg1MDIxMiwiZXhwIjoxNzYyODUzODEyfQ.ifqR2VqMrxhoE2YlXn2qopWKyCbSzcG-e15errLVb2Y",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8004/payments/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8004",
+              "path": [
+                "payments",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Payment Status by Admin",
+          "id": "7fe0761b-b1af-4e88-9b79-be9aafe1d35c",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2Mjg1MDIxMiwiZXhwIjoxNzYyODUzODEyfQ.ifqR2VqMrxhoE2YlXn2qopWKyCbSzcG-e15errLVb2Y",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\" : \"failed\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8004/payments/68ee503f7eaa0763545d12c8/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8004",
+              "path": [
+                "payments",
+                "68ee503f7eaa0763545d12c8",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "6e109a48-19ff-43a5-ae1a-de6605b31ddc"
+    },
+    {
+      "name": "BFF-Mobile",
+      "item": [
+        {
+          "name": "Cart",
+          "item": [
+            {
+              "name": "Get Carts by Token",
+              "id": "39d4d708-851f-4857-a60d-00f524d10362",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NTExNzUyOCwiZXhwIjoxNzY1MTIxMTI4fQ.IxXRkOp_NwkfohuCfzVkbxMiSTJeITjII-jJDlT7HdA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/cart",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "cart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Cart",
+              "id": "69b641f0-e5dd-4795-8adb-8da430cafbec",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0NjU5MzY5LCJleHAiOjE3NjQ2NjI5Njl9.y5CUwaPuJPBvECPp0nMDYN0doZTXe_YCruW4nNBceIE",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\",\n    \"quantity\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/cart/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "cart",
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Cart",
+              "id": "3bfcabf3-2f05-4ae2-9837-4534b0c7156d",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0NjYyMjEyLCJleHAiOjE3NjQ2NjU4MTJ9.72XpY6cZv2dkONqsDQ35xZNV0gc5X870mF59HWkeMuQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"quantity\": 9999\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/cart/items/692e919094f8d09c0522b0f4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "cart",
+                    "items",
+                    "692e919094f8d09c0522b0f4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Cart",
+              "id": "e9847c33-a051-4a8a-8e98-b35ff7c12114",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0ODY0NDU2LCJleHAiOjE3NjQ4NjgwNTZ9.Ysmvek4V5KQutT-O1n0h_Lgco_n17eKSLWLPc1UB3fU",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/cart/items/6931b219e4cd42d81d539070",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "cart",
+                    "items",
+                    "6931b219e4cd42d81d539070"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "09a4d0a5-a1f8-46d4-b245-f4c1514414d3"
+        },
+        {
+          "name": "Address",
+          "item": [
+            {
+              "name": "Get Addresses",
+              "id": "5a4d5ef3-f4db-4e30-923e-0a4dab27a3c8",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxMDM2MiwiZXhwIjoxNzY0OTEzOTYyfQ.hE_SCpBIP7_QonobEVjROkMCKnhNG1W9OWAVZYL2ATc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/addresses",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Addresss",
+              "id": "d716a304-0b91-4966-8214-c2c98dc41940",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxMTAwNCwiZXhwIjoxNzY0OTE0NjA0fQ.FV7DlPCRN-CofunjtjEQ6KQrMz3EB6BBJ4KEkTHHPj0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"label\": \"Rumah\",\n    \"recipientName\": \"Sherly Septiani\",\n    \"phoneNumber\": \"081234567890\",\n    \"street\": \"Jl. Contoh Alamat Baru No. 1\",\n    \"city\": \"Kota Contoh\",\n    \"province\": \"Provinsi Contoh\",\n    \"postalCode\": \"12345\",\n    \"isDefault\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/addresses",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Address",
+              "id": "b9888ccf-143c-48fa-ab30-7203415122ac",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxMjA4NywiZXhwIjoxNzY0OTE1Njg3fQ.v48Oh9XSKYuEV3b41pTAX-pAn4gaL1B498sXkf-kWTA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"label\": \"Home\",\n    \"recipientName\": \"Sherly Septiani\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/addresses/693267a3cd04f67f2e0f57e4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "addresses",
+                    "693267a3cd04f67f2e0f57e4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Address",
+              "id": "c67456c3-7718-4e3c-a3e1-b183110e01ca",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxMzk0MCwiZXhwIjoxNzY0OTE3NTQwfQ.pff35VflHbWbpv2OFv1lkm3g8HrnAdaFKNDhRVQImAk",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/addresses/693267a3cd04f67f2e0f57e4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "addresses",
+                    "693267a3cd04f67f2e0f57e4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Set Default Address",
+              "id": "b66ce85d-c04c-4104-9628-a41b1b392785",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxMzk0MCwiZXhwIjoxNzY0OTE3NTQwfQ.pff35VflHbWbpv2OFv1lkm3g8HrnAdaFKNDhRVQImAk",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/addresses/6932739acd04f67f2e0f580b/default",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "addresses",
+                    "6932739acd04f67f2e0f580b",
+                    "default"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "8b9fffcb-0036-441f-a6eb-648c29d7290a"
+        },
+        {
+          "name": "Wishlist",
+          "item": [
+            {
+              "name": "Create Wishlist",
+              "id": "13a8e797-5ef1-4389-9e29-baf76f2f204c",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk0NjE3NCwiZXhwIjoxNzY0OTQ5Nzc0fQ.dE-uW-Y57A9LmrnpZgnMlzXAeMWBbnb75QkNVn4uB4A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/wishlist",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "wishlist"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Wishlists",
+              "id": "e160fab9-92fb-4c85-ba13-3382e504e9f4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk0NjE3NCwiZXhwIjoxNzY0OTQ5Nzc0fQ.dE-uW-Y57A9LmrnpZgnMlzXAeMWBbnb75QkNVn4uB4A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/wishlist",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "wishlist"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Wishlist",
+              "id": "fd6c8e83-27d2-4b2e-a670-70427237fe31",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk0NjE3NCwiZXhwIjoxNzY0OTQ5Nzc0fQ.dE-uW-Y57A9LmrnpZgnMlzXAeMWBbnb75QkNVn4uB4A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/wishlist/6932f1069418b97793283a15",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "wishlist",
+                    "6932f1069418b97793283a15"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "a14da1c5-58e9-4a5b-bff6-0b489978ce7d"
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "Get All Orders",
+              "id": "48bd68b9-aa49-4608-af33-c4cc9466b92a",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk4OTMyOCwiZXhwIjoxNzY0OTkyOTI4fQ.X3bACkTgFiYpW_QXKRvUkDlwdEc81K1VLvQVEzkEK5M",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/orders",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Order by ID",
+              "id": "1ab6b7ef-7cf7-4572-8684-8686515f9b53",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk4OTMyOCwiZXhwIjoxNzY0OTkyOTI4fQ.X3bACkTgFiYpW_QXKRvUkDlwdEc81K1VLvQVEzkEK5M",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/orders/68ce7a13977fe196911d81ce",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "orders",
+                    "68ce7a13977fe196911d81ce"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "02029c7a-40ec-42d4-aede-39e14abb166d"
+        },
+        {
+          "name": "Profile",
+          "item": [
+            {
+              "name": "Get Profile",
+              "id": "864e348e-c2b3-4677-8055-6928ce7f674a",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0ODY1Mjg0LCJleHAiOjE3NjQ4Njg4ODR9.e1zRX_fu3hlJTggzIUYo1CKliEHRb_9c3H1rFbWWDSY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "profile"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Profile",
+              "id": "87efb767-fd8f-4e2d-8fa6-6e0ed58b139b",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0OTA4MDA2LCJleHAiOjE3NjQ5MTE2MDZ9.t-J3hHfrN01FQZEncogp9nFedixIMLyoho3LpH4wF-k",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    // \"fullname\" : \"Mydeimos Kremnoan\",\n    // \"phoneNumber\" : \"0003339201\",\n    // \"username\" : \"mydeimoscutie\",\n    \"oldPassword\" : \"abcdef\",\n    \"newPassword\" : \"bbbggghhh\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "profile"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "6160267c-dc5e-4d33-b05c-448e70d0915b"
+        },
+        {
+          "name": "Dashboard",
+          "id": "318f576f-6439-436a-942b-593e7e8a52ce",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDU5MDEzMSwiZXhwIjoxNzY0NTkzNzMxfQ.6MHNrfVvpT5iIG1dwXv2OsALpgTwpngXLqSHz4HVgog",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8006/bff-mobile/dashboard",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8006",
+              "path": [
+                "bff-mobile",
+                "dashboard"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Reviews from One Product",
+          "id": "53db5b1a-76ba-46ad-9ac0-cefac6e97271",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8006/bff-mobile/products/692565d64981456867adee39",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8006",
+              "path": [
+                "bff-mobile",
+                "products",
+                "692565d64981456867adee39"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Checkout Data",
+          "id": "f4e4e3c7-d65a-4d6d-958e-3b14871ce379",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxODA3OCwiZXhwIjoxNzY0OTIxNjc4fQ.drZn0gNMu8UYP5mubqHOKxDuGwiYaC3ZBX47o8kZP4k",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8006/bff-mobile/checkout-data",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8006",
+              "path": [
+                "bff-mobile",
+                "checkout-data"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Reviews",
+          "id": "8eec5914-f5a7-423d-b893-87fd363fbd30",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NTEyMzQ2MywiZXhwIjoxNzY1MTI3MDYzfQ.ixYKh_9KoS0CaEllzSFdPA_RCjcfSb74mu66A0XCSRg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rating\" : 5,\n    \"comment\": \"WOWWW keren sekali \"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8006/bff-mobile/products/692565c84981456867adee35/reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8006",
+              "path": [
+                "bff-mobile",
+                "products",
+                "692565c84981456867adee35",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Reviews",
+          "id": "b6803aa4-8b7a-495e-841f-234fcbd9f072",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NTI2NTcwMSwiZXhwIjoxNzY1MjY5MzAxfQ.wU7BvKL2d1FsIlHahdFtSF-UX8AOBsiEYQEMVMn2MCk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8006/bff-mobile/account/my-reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8006",
+              "path": [
+                "bff-mobile",
+                "account",
+                "my-reviews"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "924ad2bc-63e7-456c-a146-77bcc2193d9e"
+    },
+    {
+      "name": "BFF-Web",
+      "item": [
+        {
+          "name": "Carts",
+          "item": [
+            {
+              "name": "Get Cart by Token",
+              "id": "189e8538-f2c4-4291-b64f-42051c84412b",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGY2ZjAzMTc4MzI2NjgwMzEwZGY0ZDEiLCJlbWFpbCI6Imphd2FAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NjQ2NTY2NjIsImV4cCI6MTc2NDY2MDI2Mn0.7HVg-f3LqCpCsYSzmJdYNwW9UrwCF4gmwqqkENh9l4Q",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8005/bff/cart",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "cart"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Cart",
+              "id": "5d955bc0-e230-4a7d-8cdd-3c34ea322bd5",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0NjYwNzc2LCJleHAiOjE3NjQ2NjQzNzZ9.4vEyij0BXN-EvIvsJCoVlYo_RmWisswtb_FKmBynvNQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\",\n    \"quantity\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/cart/items",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "cart",
+                    "items"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Cart",
+              "id": "09f349dc-ad28-4a67-af67-e2f46b433c23",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0NjYyMjEyLCJleHAiOjE3NjQ2NjU4MTJ9.72XpY6cZv2dkONqsDQ35xZNV0gc5X870mF59HWkeMuQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"quantity\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/cart/items/692e919094f8d09c0522b0f4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "cart",
+                    "items",
+                    "692e919094f8d09c0522b0f4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Cart",
+              "id": "c20420f4-beb7-4887-84a7-8cac4acb5f02",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0ODY0ODE0LCJleHAiOjE3NjQ4Njg0MTR9.YfrCC3WumHOedQC0yvisUP6G5g82RpuIhQ9mLQyJWSY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8005/bff/cart/items/6931b1f0e4cd42d81d53906e",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "cart",
+                    "items",
+                    "6931b1f0e4cd42d81d53906e"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "c3e459c9-4176-4f2d-80d7-e163a30ed4a7"
+        },
+        {
+          "name": "Address",
+          "item": [
+            {
+              "name": "Get Addresses",
+              "id": "7eee6f52-9a42-48aa-9fbd-af977452ef14",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxNDc2NiwiZXhwIjoxNzY0OTE4MzY2fQ.w_4ulaDdYrFY4mGH8WDj1pvvbQptk65lGhFkUke97kQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8005/bff/account/addresses",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "account",
+                    "addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Address",
+              "id": "040f36f3-e359-4fad-891d-b3a99d9c4e54",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxNDc2NiwiZXhwIjoxNzY0OTE4MzY2fQ.w_4ulaDdYrFY4mGH8WDj1pvvbQptk65lGhFkUke97kQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"label\": \"Rumah\",\n    \"recipientName\": \"Sherly Septiani\",\n    \"phoneNumber\": \"081234567890\",\n    \"street\": \"Jl. Contoh Alamat Baru No. 2\",\n    \"city\": \"Kota Contoh\",\n    \"province\": \"Provinsi Contoh\",\n    \"postalCode\": \"12345\",\n    \"isDefault\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/account/addresses",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "account",
+                    "addresses"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Address",
+              "id": "bc25c4bf-8672-438c-bbf2-b9a13b791049",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxNTgxNSwiZXhwIjoxNzY0OTE5NDE1fQ.zQX60aFQZ4FUmZ_YNPGqQeSQJtaKnJ9IMX_GQCaIfEs",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"label\": \"Home\",\n    \"recipientName\": \"Sherly Septiani\",\n    \"phoneNumber\": \"081234567890\",\n    \"street\": \"Jl. Kenanga III No. 35 RT 01/RW 04\",\n    \"city\": \"Pati\",\n    \"province\": \"Jawa Tengah\",\n    \"postalCode\": \"59118\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/account/addresses/69327a33624908501b6a42ee",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "account",
+                    "addresses",
+                    "69327a33624908501b6a42ee"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Address",
+              "id": "dfbe8dab-6503-4f5a-b133-db2ebf8f0d2b",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxMzk0MCwiZXhwIjoxNzY0OTE3NTQwfQ.pff35VflHbWbpv2OFv1lkm3g8HrnAdaFKNDhRVQImAk",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/addresses/693273a1cd04f67f2e0f5810",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "addresses",
+                    "693273a1cd04f67f2e0f5810"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Set Default Address",
+              "id": "057c31ba-f34b-4256-9604-c907812ab4ed",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxMzk0MCwiZXhwIjoxNzY0OTE3NTQwfQ.pff35VflHbWbpv2OFv1lkm3g8HrnAdaFKNDhRVQImAk",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/addresses/69327a33624908501b6a42ee/default",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "addresses",
+                    "69327a33624908501b6a42ee",
+                    "default"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "bd75b668-0bed-46e7-b07f-f53e3fef2064"
+        },
+        {
+          "name": "Wishlist",
+          "item": [
+            {
+              "name": "Create Wishlist",
+              "id": "9c2a6fb1-4066-4c5a-8bba-400a13f8e870",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk0NjE3NCwiZXhwIjoxNzY0OTQ5Nzc0fQ.dE-uW-Y57A9LmrnpZgnMlzXAeMWBbnb75QkNVn4uB4A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/wishlist",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "wishlist"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Wishlists",
+              "id": "44136da7-338d-41b9-a7eb-441f4cdb6413",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk0NjE3NCwiZXhwIjoxNzY0OTQ5Nzc0fQ.dE-uW-Y57A9LmrnpZgnMlzXAeMWBbnb75QkNVn4uB4A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/wishlist",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "wishlist"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Wishlist",
+              "id": "3c21d524-3d54-444f-9e9e-ccb853e8815f",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk0NjE3NCwiZXhwIjoxNzY0OTQ5Nzc0fQ.dE-uW-Y57A9LmrnpZgnMlzXAeMWBbnb75QkNVn4uB4A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"productId\": \"692565d64981456867adee39\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/wishlist/6932f7869418b97793283a1b",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "wishlist",
+                    "6932f7869418b97793283a1b"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "79f6378e-6339-4580-bebc-773829f0095c"
+        },
+        {
+          "name": "Profile",
+          "item": [
+            {
+              "name": "Get Profile",
+              "id": "eef042aa-854e-48ff-8a8f-1d1a66d966bd",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OTFjMDYyZDg5OTIyN2JiM2ZhYTIxMzEiLCJlbWFpbCI6Im15ZGVpQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzY0ODY1Mjg0LCJleHAiOjE3NjQ4Njg4ODR9.e1zRX_fu3hlJTggzIUYo1CKliEHRb_9c3H1rFbWWDSY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/account/profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "account",
+                    "profile"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Profile",
+              "id": "b9a1f19f-fb9d-458d-ad7d-0577721b371a",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxNDc2NiwiZXhwIjoxNzY0OTE4MzY2fQ.w_4ulaDdYrFY4mGH8WDj1pvvbQptk65lGhFkUke97kQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"fullname\" : \"Mydeimos Kremnoan\",\n    \"phoneNumber\" : \"0003339201\"\n    // \"username\" : \"mydeimoscutie\"\n    // \"oldPassword\" : \"abcdef\",\n    // \"newPassword\" : \"bbbggghhh\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8005/bff/account/profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8005",
+                  "path": [
+                    "bff",
+                    "account",
+                    "profile"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "e6ad0e09-778f-44e3-9af9-f235bd7f0448"
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "Get All Orders",
+              "id": "15a804b0-7827-4843-b4fe-812d1c05559b",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk4OTMyOCwiZXhwIjoxNzY0OTkyOTI4fQ.X3bACkTgFiYpW_QXKRvUkDlwdEc81K1VLvQVEzkEK5M",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/orders",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Order by ID",
+              "id": "3a31d4e9-a152-4789-8d7c-c773411ec646",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDk4OTMyOCwiZXhwIjoxNzY0OTkyOTI4fQ.X3bACkTgFiYpW_QXKRvUkDlwdEc81K1VLvQVEzkEK5M",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8006/bff-mobile/orders/68ce7a13977fe196911d81ce",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8006",
+                  "path": [
+                    "bff-mobile",
+                    "orders",
+                    "68ce7a13977fe196911d81ce"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "a610b24a-1aa7-4a9d-8381-a1ec59540b23"
+        },
+        {
+          "name": "Dashboard",
+          "id": "0c5fc214-9761-4afe-82d1-c76a8f241ebe",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGRmNzhmYjFmYTk3YjNmYzQzZGI1ODgiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDU2ODY3NywiZXhwIjoxNzY0NTcyMjc3fQ.LWzmSFbs-vYfprVvzWeNl1NS_ywmi2b5vu0CXbwQeQ0",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8005/bff/dashboard",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8005",
+              "path": [
+                "bff",
+                "dashboard"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Reviews from One Product",
+          "id": "ef7a1aac-87c4-46c8-802c-67058449347e",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8005/bff/products/692565d64981456867adee39",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8005",
+              "path": [
+                "bff",
+                "products",
+                "692565d64981456867adee39"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Checkout Data",
+          "id": "120ad8fd-a1e5-49e3-a9d2-d3cef77aa304",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NDkxODA3OCwiZXhwIjoxNzY0OTIxNjc4fQ.drZn0gNMu8UYP5mubqHOKxDuGwiYaC3ZBX47o8kZP4k",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8006/bff-mobile/checkout-data",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8006",
+              "path": [
+                "bff-mobile",
+                "checkout-data"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Reviews",
+          "id": "e20804a9-f5f6-4b13-88f3-1af45db4f6a4",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NTI2NTcwMSwiZXhwIjoxNzY1MjY5MzAxfQ.wU7BvKL2d1FsIlHahdFtSF-UX8AOBsiEYQEMVMn2MCk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8005/bff/account/my-reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8005",
+              "path": [
+                "bff",
+                "account",
+                "my-reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Reviews",
+          "id": "784c5f6d-d450-47e5-81bd-dc29e7f63592",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NTI2NTcwMSwiZXhwIjoxNzY1MjY5MzAxfQ.wU7BvKL2d1FsIlHahdFtSF-UX8AOBsiEYQEMVMn2MCk",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rating\" : 5,\n    \"comment\": \"WOWWW keren sekali \"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8005/bff/products/692565c84981456867adee35/reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8005",
+              "path": [
+                "bff",
+                "products",
+                "692565c84981456867adee35",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "ddaebab2-e708-422c-93f7-4fbe29a1d3cc"
+    },
+    {
+      "name": "BFF-Admin",
+      "item": [
+        {
+          "name": "Users",
+          "item": [
+            {
+              "name": "Get Users",
+              "id": "7f0104dc-205d-419b-b7d4-615c035cbea5",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get User by ID",
+              "id": "696c041b-d7b3-428e-9178-ab66130e6df7",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTU1MDUyOSwiZXhwIjoxNzY1NTU0MTI5fQ.s93sN5kpfIAn3rHHz9-GMidhfFaEPyW8YPeM3A-wEuA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/users/68bf956f844619c0baea3385",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "users",
+                    "68bf956f844619c0baea3385"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit User",
+              "id": "cbbe3070-4ac5-4413-a228-3a8c0660acb6",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTU1MDUyOSwiZXhwIjoxNzY1NTU0MTI5fQ.s93sN5kpfIAn3rHHz9-GMidhfFaEPyW8YPeM3A-wEuA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\" : \"jawatengah\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/users/68bf956f844619c0baea3385",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "users",
+                    "68bf956f844619c0baea3385"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Account",
+              "id": "97dde0a4-f846-4f9d-91be-98b27387a744",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTU1MDUyOSwiZXhwIjoxNzY1NTU0MTI5fQ.s93sN5kpfIAn3rHHz9-GMidhfFaEPyW8YPeM3A-wEuA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/users/693c2deb0535e338af81ecc4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "users",
+                    "693c2deb0535e338af81ecc4"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get User's Address",
+              "id": "f9210522-9afa-4b9e-a6f6-5efdf80afd6d",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTU1MDUyOSwiZXhwIjoxNzY1NTU0MTI5fQ.s93sN5kpfIAn3rHHz9-GMidhfFaEPyW8YPeM3A-wEuA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/users/68886ebc0a5ea5f4dec36ab9/addresses",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "users",
+                    "68886ebc0a5ea5f4dec36ab9",
+                    "addresses"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "4fea66fa-59b8-4475-9af7-71e3a6b37353"
+        },
+        {
+          "name": "Products",
+          "item": [
+            {
+              "name": "Get All Products",
+              "id": "75bf032c-6acc-4126-a1d4-8394be910bd9",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Product by ID",
+              "id": "0f295cc8-225c-44f4-9d74-1d278a300d0a",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/products/69366ae1bc17b6c835302286",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "products",
+                    "69366ae1bc17b6c835302286"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Product",
+              "id": "59778e01-ff21-4b08-ad8d-b08daf0eb9ab",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTU1MDUyOSwiZXhwIjoxNzY1NTU0MTI5fQ.s93sN5kpfIAn3rHHz9-GMidhfFaEPyW8YPeM3A-wEuA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"Laptop Macbook\",\n    // \"description\": \"Heyy uuuu is this illegal?\",\n    \"price\": 5554000,\n    \"stock\": 10,\n    \"categoryId\": \"68887acd2020a91043854992\",\n    \"imageUrl\": \"https://example.com/gambar-macbook-pink.jpg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/products",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "products"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Product",
+              "id": "5fbe7bab-8e32-49f3-a920-00f9c0e23639",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYwMTU1MywiZXhwIjoxNzY1NjA1MTUzfQ.Ds5a8UTd2bWqHzyW1zAiYw_dasEiRGrdlf8t1XnPUG8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\" : \"Raket Bekas Snoxee_95\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/products/693c329bc2d85a747ad8d495",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "products",
+                    "693c329bc2d85a747ad8d495"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Produk",
+              "id": "fe9f41fd-5220-42d9-88ca-9758c95af6fd",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYwMTU1MywiZXhwIjoxNzY1NjA1MTUzfQ.Ds5a8UTd2bWqHzyW1zAiYw_dasEiRGrdlf8t1XnPUG8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\" : \"Raket Bekas Snoxee_95\"\n}"
+                },
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/products/693c329bc2d85a747ad8d495",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "products",
+                    "693c329bc2d85a747ad8d495"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Stock",
+              "id": "7d4c001a-a9a1-4c38-8619-0e71b263cfc5",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Review of Product",
+              "id": "b85ba64a-07e6-450e-9f9f-eb1a8a4be472",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/products/692413d5a7e2ef19b80b5159/reviews",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "products",
+                    "692413d5a7e2ef19b80b5159",
+                    "reviews"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Low Stock",
+              "id": "8901f707-44b7-4e96-ae34-129e7896a2bc",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYwNTQzNywiZXhwIjoxNzY1NjA5MDM3fQ.l4N0ZDCsSlBXNCUy54_nqc-HKqQiGtvlDXH2J0mXf_A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/products/low-stock",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "products",
+                    "low-stock"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "2f1ab12d-cf9b-4712-aa3b-172b5b0c8d60"
+        },
+        {
+          "name": "Categories",
+          "item": [
+            {
+              "name": "Get All Categories",
+              "id": "32c52e9c-ed4b-49d2-998f-61b50ef74d18",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYwNTQzNywiZXhwIjoxNzY1NjA5MDM3fQ.l4N0ZDCsSlBXNCUy54_nqc-HKqQiGtvlDXH2J0mXf_A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/categories",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Category by ID",
+              "id": "2ae771cd-4677-4df3-abca-e8cefc5536b3",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/categories/68887ab62020a9104385498e",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "categories",
+                    "68887ab62020a9104385498e"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Products by Category",
+              "id": "d28aecf1-620d-445b-abdf-7d20050dff27",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8003/categories/68887ab62020a9104385498e/products",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "categories",
+                    "68887ab62020a9104385498e",
+                    "products"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create New Category",
+              "id": "d8870447-0eec-4191-918e-d12a546405bf",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2MzY1Nzk4NSwiZXhwIjoxNzYzNjYxNTg1fQ.xA8wVTyPxKj7hcRL62fVaW3pzAc6yfsA_7oMwcPfjzY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\" : \"Kesehatan Tubuh\",\n    \"description\" : \"Ya untuk sehat\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8003/categories",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8003",
+                  "path": [
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Category by ID",
+              "id": "5c073446-abff-4740-9931-317573e0f38e",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYwOTY3OSwiZXhwIjoxNzY1NjEzMjc5fQ.BpMAbAeQkjBhRh5_iOCtml4CmWj0NnJgi7woSoh8u8g",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\" : \"Rumah Tangga\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/management/categories/68887ad62020a91043854996",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "management",
+                    "categories",
+                    "68887ad62020a91043854996"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Category by ID",
+              "id": "764a33be-d1c8-47ce-b3f6-b255a5e491d1",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYwOTY3OSwiZXhwIjoxNzY1NjEzMjc5fQ.BpMAbAeQkjBhRh5_iOCtml4CmWj0NnJgi7woSoh8u8g",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/categories/693d1102997978e07dce68ae",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "categories",
+                    "693d1102997978e07dce68ae"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "98e32fc7-702f-4d6b-8948-9374116e6557"
+        },
+        {
+          "name": "Order",
+          "item": [
+            {
+              "name": "Get Orders",
+              "id": "7154c6ed-a7a5-4325-8a2f-382a1f02b475",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYxMDE3NywiZXhwIjoxNzY1NjEzNzc3fQ.KS5xmyr7-_tqqs7X_-vMUdghF0Gfmf31rqgOfseGPrQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/orders",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "orders"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Order by ID",
+              "id": "3acde099-810f-414d-825a-bd455a2eb96d",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYxMDE3NywiZXhwIjoxNzY1NjEzNzc3fQ.KS5xmyr7-_tqqs7X_-vMUdghF0Gfmf31rqgOfseGPrQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/orders/6936872e99630c361b55e05f",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "orders",
+                    "6936872e99630c361b55e05f"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Edit Status",
+              "id": "fcd3e524-205e-41c9-88fc-9766857fea40",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYxMzg5OSwiZXhwIjoxNzY1NjE3NDk5fQ.KFlYFcmJwzTx-rv4WhCCcrnwNA5bL0bwP2ugdF1EcUc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\": \"completed\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/orders/69243efa8e234671b55ba069/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "orders",
+                    "69243efa8e234671b55ba069",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Order",
+              "id": "577ceb5e-89cc-4359-aab8-26fc036eda28",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTYxODAxNSwiZXhwIjoxNzY1NjIxNjE1fQ.F0oh5dIjNOBOib9tEoCfy6PFCQ5VSsalIaLiO_4uGsY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/orders/692414a29c00beb1acde6859",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "orders",
+                    "692414a29c00beb1acde6859"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "13889d89-c8e9-4632-a25e-f9b15b3bf810"
+        },
+        {
+          "name": "Payments",
+          "item": [
+            {
+              "name": "Get Payments",
+              "id": "e833e9e9-b2eb-4e81-a58a-20aceead1945",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTY0MTQ0MCwiZXhwIjoxNzY1NjQ1MDQwfQ.k5kgS5rPpuRjPdb0qxwQ45IDt443w-FvjT-FLFhi9vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/payments",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "payments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Payment by ID",
+              "id": "11fb95a4-6240-4b42-8bd2-1869d7629ae7",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTY0MTQ0MCwiZXhwIjoxNzY1NjQ1MDQwfQ.k5kgS5rPpuRjPdb0qxwQ45IDt443w-FvjT-FLFhi9vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/payments/6936877bf835116a6570b8e5",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "payments",
+                    "6936877bf835116a6570b8e5"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Payment Status",
+              "id": "69861f09-c9e7-4db4-8d75-d788924ee474",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTY0MTQ0MCwiZXhwIjoxNzY1NjQ1MDQwfQ.k5kgS5rPpuRjPdb0qxwQ45IDt443w-FvjT-FLFhi9vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"status\" : \"success\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/payments/6936877bf835116a6570b8e5/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "payments",
+                    "6936877bf835116a6570b8e5",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Stats",
+              "id": "30a61445-c6b2-43e7-bf4d-665bad4f448b",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTY0MTQ0MCwiZXhwIjoxNzY1NjQ1MDQwfQ.k5kgS5rPpuRjPdb0qxwQ45IDt443w-FvjT-FLFhi9vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/payments/stats",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "payments",
+                    "stats"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "48ec04b8-5ad5-410a-abe7-1d1c354b2348"
+        },
+        {
+          "name": "Reviews",
+          "item": [
+            {
+              "name": "Get Reviews",
+              "id": "0eca5698-0585-473b-8e45-12d1ca779f10",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTY0MTQ0MCwiZXhwIjoxNzY1NjQ1MDQwfQ.k5kgS5rPpuRjPdb0qxwQ45IDt443w-FvjT-FLFhi9vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/reviews",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "reviews"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Review by ID",
+              "id": "af66c501-f015-48d3-9395-ea7eacc8ec81",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTY0MTQ0MCwiZXhwIjoxNzY1NjQ1MDQwfQ.k5kgS5rPpuRjPdb0qxwQ45IDt443w-FvjT-FLFhi9vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/reviews/6937d2eded465533c8dbd03f",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "reviews",
+                    "6937d2eded465533c8dbd03f"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Reviews",
+              "id": "551f378f-8b4f-4f3b-84c9-45ed1a216296",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTY0MTQ0MCwiZXhwIjoxNzY1NjQ1MDQwfQ.k5kgS5rPpuRjPdb0qxwQ45IDt443w-FvjT-FLFhi9vc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8008/bff-admin/reviews/6937d2eded465533c8dbd03f",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8008",
+                  "path": [
+                    "bff-admin",
+                    "reviews",
+                    "6937d2eded465533c8dbd03f"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "id": "8b5e4b7c-1b6e-4a8d-bda8-4aabd994e8d3"
+        },
+        {
+          "name": "Dashboard",
+          "id": "f9b0e0a8-1eae-43b3-ad52-2e43ba001d15",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGJmOTU2Zjg0NDYxOWMwYmFlYTMzODUiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2NTU1MDUyOSwiZXhwIjoxNzY1NTU0MTI5fQ.s93sN5kpfIAn3rHHz9-GMidhfFaEPyW8YPeM3A-wEuA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8008/bff-admin/dashboard",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8008",
+              "path": [
+                "bff-admin",
+                "dashboard"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "05db1354-c905-4bfd-9cde-b8fe58da0f5c"
+    },
+    {
+      "name": "API Gateway",
+      "item": [
+        {
+          "name": "Register",
+          "id": "7ab3c18f-1976-4499-ac6b-5e5893728f33",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\" : \"ABCDEFGHI\",\n    \"email\" : \"mydei@gmail.com\",\n    \"password\" : \"phainon\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8007/api/user-service/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8007",
+              "path": [
+                "api",
+                "user-service",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "id": "5d6e9bbc-0804-4d94-b2af-c78de0d66396",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"sherlylily04@gmail.com\",\n    \"password\": \"sherlyseptiani04\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8007/api/user-service/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8007",
+              "path": [
+                "api",
+                "user-service",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Products",
+          "id": "5122b461-bad0-464c-bb37-998a08dde9d8",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8007/api/product-service/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8007",
+              "path": [
+                "api",
+                "product-service",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BFF Web Cek Produk",
+          "id": "01161491-7a46-419e-8e77-b43356485fac",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3MDYzNzExMSwiZXhwIjoxNzcwNjQwNzExfQ.bPjtyVx04_5Pnu0x3Qwws-UBJ5e524IPFHqq5ABwfpM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8007/api/bff/orders/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8007",
+              "path": [
+                "api",
+                "bff",
+                "orders",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BFF Mob Cek Produk",
+          "id": "c0731d63-34cf-41e9-b241-bf4c202affb3",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3MDYzNzExMSwiZXhwIjoxNzcwNjQwNzExfQ.bPjtyVx04_5Pnu0x3Qwws-UBJ5e524IPFHqq5ABwfpM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8007/api/bff-mobile/orders/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8007",
+              "path": [
+                "api",
+                "bff-mobile",
+                "orders",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BFF Web Dashboard",
+          "id": "7ce90d04-5d85-4faa-b49e-b3ad26acd4ad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BFF Mobile Dashboard",
+          "id": "cadc9d0b-41e7-49a4-9293-b58870f02a63",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BFF Web Checkout Data",
+          "id": "49bb0b35-6112-4684-9882-4c38456e24df",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BFF Mobile Checkout Data",
+          "id": "f833222f-9cea-4686-8e3d-97cf0543c598",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "id": "00fecca6-9624-416a-bf21-a85b2ed10124",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "31fc9cdf-b259-409a-a933-0c1086295d1d"
+    },
+    {
+      "name": "Demo Vid (API Gateway)",
+      "item": [
+        {
+          "name": "Login",
+          "id": "e449b402-e8b4-4477-9ce3-572b76df5290",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"sherlylily04@gmail.com\",\n    \"password\": \"sherlyseptiani04\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/user-service/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "user-service",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Profile",
+          "id": "eae399de-c67b-4bb7-9431-091f252cdbc1",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3MTE0MDgwMCwiZXhwIjoxNzcxMTQ0NDAwfQ.jxInVNToj4StIo-NlVjAS36iBhjW-tmOTaeQKqa2h1Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/user-service/users/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "user-service",
+                "users",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Order",
+          "id": "7ee7fa55-fbac-4388-a138-12a75390c9d0",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3MTE0MDgwMCwiZXhwIjoxNzcxMTQ0NDAwfQ.jxInVNToj4StIo-NlVjAS36iBhjW-tmOTaeQKqa2h1Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/order-service/orders/my-orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "order-service",
+                "orders",
+                "my-orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Wishlist",
+          "id": "a25f97b9-9a72-47a5-8ef9-8ff119d86aaa",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3MTE0MDgwMCwiZXhwIjoxNzcxMTQ0NDAwfQ.jxInVNToj4StIo-NlVjAS36iBhjW-tmOTaeQKqa2h1Q",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/order-service/wishlists",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "order-service",
+                "wishlists"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Dashboard Web",
+          "id": "697bcf1f-56b5-43ce-87d2-43e56084bf0a",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NzA0MTUzNywiZXhwIjoxNzc3MDQ1MTM3fQ.vO9MzFkh8vdRkVa0OfaeEc5Ud1huwLjl8EdkeUGGpLA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/bff/dashboard",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "bff",
+                "dashboard"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Dashboard Mobile",
+          "id": "485f195d-66cc-4bfa-a4a6-d00633aa229a",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NzA0MTUzNywiZXhwIjoxNzc3MDQ1MTM3fQ.vO9MzFkh8vdRkVa0OfaeEc5Ud1huwLjl8EdkeUGGpLA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/bff-mobile/dashboard",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "bff-mobile",
+                "dashboard"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Order Mobile",
+          "id": "82cdb4f6-00fa-47fa-bfe3-a78b37b593c2",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NzA0MTUzNywiZXhwIjoxNzc3MDQ1MTM3fQ.vO9MzFkh8vdRkVa0OfaeEc5Ud1huwLjl8EdkeUGGpLA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/bff-mobile/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "bff-mobile",
+                "orders"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3b6a6491-44f0-4f65-9df3-9b0fbc583d9d",
+              "name": "Order Mobile",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8000/api/bff-mobile/orders",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "bff-mobile",
+                    "orders"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "221"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"dd-I0zzADnmJ1gEiEloG9TMHgeXJoQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Fri, 24 Apr 2026 15:15:17 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "responseTime": "2026-04-24T15:28:32.473Z",
+              "body": "[\n    {\n        \"id\": \"693515405096083801890343\",\n        \"orderNumber\": \"ORD-20251207-RIGR\",\n        \"status\": \"completed\",\n        \"totalAmount\": 2310000\n    },\n    {\n        \"id\": \"6936872e99630c361b55e05f\",\n        \"orderNumber\": \"ORD-20251208-R8ZR\",\n        \"status\": \"completed\",\n        \"totalAmount\": 70000\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Order Web",
+          "id": "9c4a146f-fd5d-4276-997a-7620a0ad51f3",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg4NmViYzBhNWVhNWY0ZGVjMzZhYjkiLCJlbWFpbCI6InNoZXJseWxpbHkwNEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3NzA0MTUzNywiZXhwIjoxNzc3MDQ1MTM3fQ.vO9MzFkh8vdRkVa0OfaeEc5Ud1huwLjl8EdkeUGGpLA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/bff/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "bff",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "59e0b101-6c3f-468a-8932-409c66992372"
+    },
+    {
+      "name": "New Request",
+      "id": "0eb5ea06-4125-449e-81f3-c7a243114f0f",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    }
+  ]
+}

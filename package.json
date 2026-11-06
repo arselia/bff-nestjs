@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "E-commerce microservices application",
   "scripts": {
-    "start:user": "cd user-service && npm run start",
-    "start:product": "cd product-service && npm run start",
-    "start:order": "cd order-service && npm run start",
-    "start:payment": "cd payment-service && npm run start",
-    "start:gateway": "cd api-gateway && npm run start",
-    "start:bff": "cd bff-web && npm run start",
-    "start:all": "concurrently \"npm run start:user\" \"npm run start:product\" \"npm run start:order\" \"npm run start:payment\" \"npm run start:gateway\" \"npm run start:bff\""
+    "start:user": "cd user-service && npm run start:dev",
+    "start:product": "cd product-service && npm run start:dev",
+    "start:order": "cd order-service && npm run start:dev",
+    "start:payment": "cd payment-service && npm run start:dev",
+    "start:gateway": "cd api-gateway && npm run start:dev",
+    "start:bff-web": "cd bff-web && npm run start:dev",
+    "start:bff-admin": "cd bff-admin && npm run start:dev",
+    "start:bff-mobile": "cd bff-mobile && npm run start:dev",
+    "start:all": "concurrently \"npm:start:user\" \"npm:start:product\" \"npm:start:order\" \"npm:start:payment\" \"npm:start:gateway\" \"npm:start:bff-web\" \"npm:start:bff-admin\" \"npm:start:bff-mobile\""
   },
   "dependencies": {
     "concurrently": "^8.2.0"

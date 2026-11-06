@@ -10,6 +10,7 @@ import { firstValueFrom } from 'rxjs';
 @Injectable()
 export class WishlistService implements OnModuleInit {
   private productServiceUrl: string;
+  private internalSecret: string;
 
   constructor(
     @InjectModel(Wishlist.name) private wishlistModel: Model<WishlistDocument>,
@@ -18,18 +19,21 @@ export class WishlistService implements OnModuleInit {
   ) {}
 
   onModuleInit() {
-    const productServiceUrl = this.configService.get<string>('PRODUCT_SERVICE_URL');
-    if (!productServiceUrl) {
-      throw new Error('PRODUCT_SERVICE_URL must be defined');
+    this.productServiceUrl = this.configService.get<string>('PRODUCT_SERVICE_URL')!;
+    this.internalSecret = this.configService.get<string>('INTERNAL_SECRET_KEY')!;    if (!this.productServiceUrl || !this.internalSecret) {
+      throw new Error('PRODUCT_SERVICE_URL and INTERNAL_SECRET_KEY must be defined');
     }
-    this.productServiceUrl = productServiceUrl;
   }
 
   private async validateProduct(productId: string): Promise<void> {
     try {
-      await firstValueFrom(this.httpService.get(`${this.productServiceUrl}/products/${productId}`));
+      const headers = {
+        'X-Internal-Secret': this.internalSecret,
+      };
+      await firstValueFrom(this.httpService.get(`${this.productServiceUrl}/products/${productId}`, { headers }));
     } catch (error) {
-      throw new NotFoundException(`Product with ID ${productId} not found`);
+      console.error('Error validating product:', error.response?.data || error.message);
+      throw new NotFoundException(`Product with ID ${productId} not found or validation failed`);
     }
   }
 

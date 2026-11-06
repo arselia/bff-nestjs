@@ -28,6 +28,10 @@ export class ProxyController {
       orders: 'order-service',
       payments: 'payment-service',
       bff: 'bff-web', // Map short 'bff' to 'bff-web'
+      // Add BFF services to ensure their global prefixes are handled correctly
+      'bff-web': 'bff-web',
+      'bff-mobile': 'bff-mobile',
+      'bff-admin': 'bff-admin',
     };
 
     const serviceInUrl = urlParts[0];
